@@ -24,7 +24,7 @@ function Header() {
           component="div"
           sx={{ paddingTop: "4px" }}
         >
-          Game Tracker
+          Games Tracker
         </Typography>
       </Stack>
     </Paper>
