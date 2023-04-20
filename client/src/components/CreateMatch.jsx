@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
-import { Button, Paper, Stack, TextField } from "@mui/material";
+import { Button, IconButton, Paper, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import BackIcon from "@mui/icons-material/Backspace";
 
 export default function CreateMatch(props) {
   const [players, setPlayers] = useState([]);
@@ -34,7 +35,7 @@ export default function CreateMatch(props) {
 
   for (let i = 0; i < playerCount; i++) {
     playerInput.push(
-      <Stack direction={{ md: "row", xs: "column" }} spacing={1}>
+      <Stack direction={{ md: "row", xs: "column" }} spacing={1} key={i}>
         <TextField
           variant="outlined"
           label={"Player " + (i + 1)}
@@ -64,6 +65,16 @@ export default function CreateMatch(props) {
       justifyContent="center"
       sx={{ margin: "10px" }}
     >
+      <IconButton
+        sx={{ float: "right", height: "40px", marginTop: "10px" }}
+        variant="contained"
+        color="error"
+        onClick={() => {
+          navigate(`/game/${props.gameTitle}`);
+        }}
+      >
+        <BackIcon />
+      </IconButton>
       <Paper
         variant="outlined"
         sx={{ padding: "10px", maxWidth: { md: "500px", xs: "auto" } }}

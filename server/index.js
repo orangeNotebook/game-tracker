@@ -68,7 +68,7 @@ app.get("/getMatches/:gameTitle", (req, res) => {
   let value = [gameTitle];
 
   connection.query(
-    "select `matches`.`Id`, `games`.`Title`, `games`.`Image` as 'GameImage', `matches`.`Date`, `matches`.`Image` as 'MatchImage' from `matches` join `games` on `games`.`Id` = `matches`.`GameId` where `Title` = ? order by `date`",
+    "select `matches`.`Id`, `games`.`Title`, `games`.`Image` as 'GameImage', `matches`.`Date`, `matches`.`Image` as 'MatchImage' from `matches` join `games` on `games`.`Id` = `matches`.`GameId` where `Title` = ? order by `date` desc",
     value,
     function (error, results) {
       if (error) {

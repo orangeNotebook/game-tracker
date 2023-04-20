@@ -7,7 +7,9 @@ import BackIcon from "@mui/icons-material/Backspace";
 
 export default function CreateGame(props) {
   const [title, setTitle] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(
+    "https://www.pngkey.com/png/detail/233-2332677_ega-png.png"
+  );
 
   const navigate = useNavigate();
 
@@ -74,6 +76,7 @@ export default function CreateGame(props) {
             sx={{ margin: "10px" }}
             variant="outlined"
             label="Picture URL"
+            value={imageUrl}
             onChange={(e) => {
               setImageUrl(e.target.value);
             }}
