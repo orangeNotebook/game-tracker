@@ -7,7 +7,7 @@ import BackIcon from "@mui/icons-material/Backspace";
 
 export default function CreateMatch(props) {
   const [players, setPlayers] = useState([]);
-  const [playerCount, setPlayerCount] = useState(1);
+  const [playerCount, setPlayerCount] = useState(0);
   const [places, setPlaces] = useState([]);
 
   let playerInput = [];

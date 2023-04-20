@@ -88,7 +88,12 @@ export default function CreateGame(props) {
           justifyContent="center"
           sx={{ margin: "10px" }}
         >
-          <Button color="primary" variant="contained" onClick={handleClick}>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={handleClick}
+            disabled={!title || !imageUrl}
+          >
             Submit
           </Button>
         </Stack>
