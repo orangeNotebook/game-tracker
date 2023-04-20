@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Game from "./Game";
 import { Button, Grid, Stack, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function AllGames(props) {
   const [games, setGames] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get("/getGames").then((response) => {
@@ -16,7 +18,13 @@ function AllGames(props) {
     return (
       <div>
         <Stack direction={"row"} justifyContent="center" spacing={1}>
-          <Button color="primary" variant="contained">
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={() => {
+              navigate("/add-game");
+            }}
+          >
             Add
           </Button>
         </Stack>

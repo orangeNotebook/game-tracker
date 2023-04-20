@@ -7,6 +7,7 @@ import Matches from "./pages/Matches";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import AddGame from "./pages/AddGame";
+import AddMatch from "./pages/AddMatch";
 
 const theme = createTheme({
   palette: {
@@ -51,6 +52,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="/game/:gameTitle" element={<Matches />} />
           <Route path="/add-game" element={<AddGame />} />
+          <Route path="/add-match/:gameTitle" element={<AddMatch />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

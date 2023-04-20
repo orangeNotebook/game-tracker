@@ -51,7 +51,7 @@ app.get("/getMatches/:gameTitle", (req, res) => {
 app.put("/putGame", (req, res) => {
   let { inputTerms } = req.body;
 
-  values = [[inputTerms.title], [inputTerms.image]];
+  let values = [[inputTerms.title], [inputTerms.image]];
 
   connection.query(
     "insert into games (`Title`, `Image`) values (?, ?)",
@@ -61,6 +61,62 @@ app.put("/putGame", (req, res) => {
         console.error(error);
       }
       res.send(results);
+    }
+  );
+});
+
+app.put("/putMatch", (req, res) => {
+  let { inputTerms } = req.body;
+
+  let current = new Date();
+  let cDate =
+    current.getFullYear() +
+    "-" +
+    (current.getMonth() + 1) +
+    "-" +
+    current.getDate();
+  let cTime =
+    current.getHours() +
+    ":" +
+    current.getMinutes() +
+    ":" +
+    current.getSeconds();
+  let dateTime = cDate + " " + cTime;
+
+  let values = [[inputTerms.gameTitle], [dateTime], [inputTerms.image]];
+
+  function generatePlayerQuery() {
+    let values = [];
+    let query = "insert into `scores` (`MatchId`, `Place`, `Player`) values ";
+    for (let i in inputTerms.players) {
+      if (i === inputTerms.players.length - 2) {
+        query += "((SELECT MAX(Id) FROM `matches`), ?, ?)";
+      } else {
+        query += "((SELECT MAX(Id) FROM `matches`), ?, ?), ";
+      }
+      values.push([inputTerms.places[i]]);
+      values.push([inputTerms.players[i]]);
+    }
+    return { query: query, values: values };
+  }
+
+  connection.query(
+    "insert into `matches` (`GameId`, `Date`, `Image`) values ((select `Id` from `games` where `Title` = ?), ?, ?)",
+    values,
+    function (error, results) {
+      if (error) {
+        console.error(error);
+      }
+      connection.query(
+        generatePlayerQuery().query,
+        generatePlayerQuery().values,
+        function (err, res) {
+          if (err) {
+            console.error(err);
+          }
+          res.send(res);
+        }
+      );
     }
   );
 });
