@@ -92,7 +92,7 @@ export default function CreateGame(props) {
             color="primary"
             variant="contained"
             onClick={handleClick}
-            disabled={!title || !imageUrl}
+            disabled={!title}
           >
             Submit
           </Button>

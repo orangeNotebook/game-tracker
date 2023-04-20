@@ -19,7 +19,10 @@ export default function Game(props) {
         <CardMedia
           component="img"
           sx={{ aspectRatio: "5/3" }}
-          image={props.game.Image}
+          image={
+            props.game.Image ||
+            "https://www.pngkey.com/png/detail/233-2332677_ega-png.png"
+          }
           alt={props.game.Title + " image"}
         />
         <CardContent>

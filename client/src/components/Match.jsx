@@ -21,7 +21,10 @@ export default function Match(props) {
         <CardMedia
           component="img"
           height="200"
-          image={props.match.GameImage}
+          image={
+            props.match.GameImage ||
+            "https://www.pngkey.com/png/detail/233-2332677_ega-png.png"
+          }
           alt={props.match.Title + " match image"}
         />
         <CardContent>
