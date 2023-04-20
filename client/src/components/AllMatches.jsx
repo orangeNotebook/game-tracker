@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Game from "./Game";
 import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import Match from "./Match";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +13,7 @@ function AllMatches(props) {
     axios.get(`/getMatches/${props.gameTitle}`).then((response) => {
       setMatches(response.data);
     });
-  }, []);
+  }, [props.gameTitle]);
 
   if (matches) {
     return (

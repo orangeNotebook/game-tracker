@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Game from "./Game";
 import {
-  Button,
-  Grid,
   IconButton,
   Paper,
   Stack,

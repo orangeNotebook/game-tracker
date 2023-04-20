@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, Paper, Stack, TextField } from "@mui/material";
+import { Button, Paper, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function CreateMatch(props) {
   const [players, setPlayers] = useState([]);
-  const [imageUrl, setImageUrl] = useState("");
   const [playerCount, setPlayerCount] = useState(1);
   const [places, setPlaces] = useState([]);
 
@@ -21,9 +17,7 @@ export default function CreateMatch(props) {
       const data = {
         inputTerms: {
           gameTitle: props.gameTitle,
-          image: imageUrl
-            ? imageUrl
-            : "https://www.pngkey.com/png/detail/233-2332677_ega-png.png",
+          image: "https://www.pngkey.com/png/detail/233-2332677_ega-png.png",
           players: players,
           places: places,
         },

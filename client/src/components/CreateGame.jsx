@@ -1,17 +1,6 @@
 import React, { useState } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import {
-  Button,
-  CardActionArea,
-  IconButton,
-  Paper,
-  Stack,
-  TextField,
-  TextareaAutosize,
-} from "@mui/material";
+import { Button, IconButton, Paper, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import BackIcon from "@mui/icons-material/Backspace";

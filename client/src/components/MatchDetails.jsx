@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Game from "./Game";
+
 import {
-  Button,
   Card,
   CardContent,
   CardMedia,
   Grid,
   IconButton,
   Paper,
-  Stack,
   Table,
   TableBody,
   TableCell,
@@ -19,7 +17,6 @@ import {
   Typography,
 } from "@mui/material";
 import BackIcon from "@mui/icons-material/Backspace";
-import Match from "./Match";
 import { useNavigate } from "react-router-dom";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
@@ -39,7 +36,7 @@ function MatchDetails(props) {
       let date = new Date(response.data[0].Date);
       setMatchDate(date);
     });
-  }, []);
+  }, [props.matchId]);
 
   function deleteMatch() {
     async function apifunc() {

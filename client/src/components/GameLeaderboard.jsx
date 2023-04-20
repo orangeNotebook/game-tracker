@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Game from "./Game";
 import {
-  Button,
-  Grid,
   IconButton,
   Paper,
   Stack,
@@ -26,7 +23,7 @@ function GameLeaderboard(props) {
     axios.get(`/getWinners/${props.gameTitle}`).then((response) => {
       setPlayers(response.data);
     });
-  }, []);
+  }, [props.gameTitle]);
 
   if (players) {
     return (
