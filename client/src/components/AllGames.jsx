@@ -4,7 +4,7 @@ import Game from "./Game";
 import { Button, Grid, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-function AllGames(props) {
+function AllGames() {
   const [games, setGames] = useState([]);
   const navigate = useNavigate();
 
@@ -25,7 +25,16 @@ function AllGames(props) {
               navigate("/add-game");
             }}
           >
-            Add
+            Add Game
+          </Button>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={() => {
+              navigate("/leaderboard");
+            }}
+          >
+            Global Leaderboard
           </Button>
         </Stack>
         <Grid container spacing={0}>
@@ -41,9 +50,9 @@ function AllGames(props) {
     );
   } else {
     return (
-      <div>
-        <p>Loading...</p>
-      </div>
+      <Typography variant="h4" component="div" sx={{ textAlign: "center" }}>
+        Loading...
+      </Typography>
     );
   }
 }

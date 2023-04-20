@@ -21,7 +21,9 @@ export default function CreateMatch(props) {
       const data = {
         inputTerms: {
           gameTitle: props.gameTitle,
-          image: imageUrl,
+          image: imageUrl
+            ? imageUrl
+            : "https://www.pngkey.com/png/detail/233-2332677_ega-png.png",
           players: players,
           places: places,
         },
@@ -38,10 +40,10 @@ export default function CreateMatch(props) {
 
   for (let i = 0; i < playerCount; i++) {
     playerInput.push(
-      <Stack direction={"row"} spacing={1}>
+      <Stack direction={{ md: "row", xs: "column" }} spacing={1}>
         <TextField
           variant="outlined"
-          label={"Player " + i}
+          label={"Player " + (i + 1)}
           onChange={(e) => {
             let tempPlayers = players;
             tempPlayers[i] = e.target.value;
@@ -50,7 +52,7 @@ export default function CreateMatch(props) {
         />
         <TextField
           variant="outlined"
-          label={"Place"}
+          label={"Player " + (i + 1) + " Place"}
           onChange={(e) => {
             let tempPlace = places;
             tempPlace[i] = e.target.value;
@@ -62,40 +64,63 @@ export default function CreateMatch(props) {
   }
 
   return (
-    <Paper variant="outlined">
-      <Stack direction={"column"} spacing={1} sx={{ margin: "10px" }}>
-        {playerInput}
-        <Stack direction={"row"} spacing={1} sx={{ margin: "10px" }}>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={(e) => setPlayerCount(playerCount + 1)}
+    <Stack
+      direction={{ md: "row", xs: "column" }}
+      spacing={1}
+      justifyContent="center"
+      sx={{ margin: "10px" }}
+    >
+      <Paper
+        variant="outlined"
+        sx={{ padding: "10px", maxWidth: { md: "500px", xs: "auto" } }}
+      >
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{ textAlign: "center" }}
+        >
+          Add a Match
+        </Typography>
+        <Stack direction={"column"} spacing={1} sx={{ margin: "10px" }}>
+          {playerInput}
+          <Stack
+            direction="row"
+            spacing={1}
+            justifyContent="center"
+            sx={{ margin: "10px" }}
           >
-            Add a player
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={(e) => {
-              if (playerCount > 1) {
-                setPlayerCount(playerCount - 1);
-              }
-            }}
-          >
-            Remove a player
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={(e) => setPlayerCount(playerCount + 1)}
+            >
+              Add a player
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={(e) => {
+                if (playerCount > 1) {
+                  setPlayerCount(playerCount - 1);
+                }
+              }}
+            >
+              Remove a player
+            </Button>
+          </Stack>
+        </Stack>
+        <Stack
+          direction="row"
+          spacing={1}
+          justifyContent="center"
+          sx={{ margin: "10px" }}
+        >
+          <Button color="primary" variant="contained" onClick={handleClick}>
+            Submit
           </Button>
         </Stack>
-      </Stack>
-      <TextField
-        variant="outlined"
-        label="Picture URL"
-        onChange={(e) => {
-          setImageUrl(e.target.value);
-        }}
-      />
-      <Button color="primary" variant="contained" onClick={handleClick}>
-        Submit
-      </Button>
-    </Paper>
+      </Paper>
+    </Stack>
   );
 }

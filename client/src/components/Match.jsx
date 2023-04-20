@@ -12,7 +12,7 @@ export default function Match(props) {
   const matchDate = new Date(props.match.Date);
 
   function handleClick() {
-    navigate(`/match/${props.match.Id}`);
+    navigate(`/match-details/${props.gameTitle}/${props.match.Id}`);
   }
 
   return (
@@ -21,12 +21,13 @@ export default function Match(props) {
         <CardMedia
           component="img"
           height="200"
-          image={props.match.MatchImage}
+          image={props.match.GameImage}
           alt={props.match.Title + " match image"}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {matchDate.toDateString()}
+            {matchDate.toDateString()} at {matchDate.getHours()}:
+            {matchDate.getMinutes()} {matchDate.getHours() >= 12 ? "pm" : "am"}
           </Typography>
         </CardContent>
       </CardActionArea>

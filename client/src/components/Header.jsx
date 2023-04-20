@@ -1,15 +1,32 @@
-import { Paper, Typography } from "@mui/material";
-import React from "react";
+import { Button, IconButton, Paper, Stack, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
 
 function Header() {
+  const navigate = useNavigate();
+
   return (
-    <Paper
-      variant="outlined"
-      sx={{ textAlign: "center", marginBottom: "10px" }}
-    >
-      <Typography variant="h4" component="h1">
-        Game Tracker
-      </Typography>
+    <Paper variant="outlined" sx={{ marginBottom: "10px", padding: "10px" }}>
+      <Stack direction={"row"} spacing={1}>
+        <IconButton
+          color="primary"
+          variant="contained"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <HomeIcon />
+        </IconButton>
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{ paddingTop: "4px" }}
+        >
+          Game Tracker
+        </Typography>
+      </Stack>
     </Paper>
   );
 }
