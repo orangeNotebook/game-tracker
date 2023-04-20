@@ -1,6 +1,6 @@
 # Game Tracker
 
-This repository contains code for both the server and client of the game tracker app
+This repository contains code for [games tracker](https://games-tracker.azurewebsites.net/). It is a react/express application for tracking the winners of board games or similar
 
 ## Running the program
 
